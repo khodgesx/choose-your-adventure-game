@@ -1,16 +1,8 @@
-# Choose Your Own Adventure
+Choose your own adventure: The slayer edition:
 
-Create a "Choose Your Own Adventure" style game in `app.js`.  This is a story where the user is frequently asked what the protagonist should do.  The story progresses based on what the user says should happen.
+You are a slayer and have to make decisions about where to go and what to do.
+Are you going to make the right decisions and save others or try to shirk your reponsibilities?
 
-**GETTING STARTED**
+Be aware that your decisions will have consequences!
 
-`cd` into this directory and run `npm i` in it.  This will install the `prompt-sync` package which will allow you to run the `prompt()` function.
-
-**TIPS:**
-
-- Use the provided `prompt()` function to retrieve input from the user.
-- Try to use as many functions as you can
-	- To game is structured in sections, each containing two parts: what just happend and a prompt for what to do next.  Perhaps each section is a function?
-	- You could structure it so the functions take parameters relating to what the user has chosen to do
-- Use variables to keep track of things that have happened in the story (e.g. how much money the user has, has the user accomplished certain tasks)
-- Try to turn the app into as much of a game as possible, as opposed to just a simple story
+Try to make friends, slay the baddies, and watch your health, if your health gets to 0 you lose!
