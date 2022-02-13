@@ -3,6 +3,8 @@ let friends = [];
 let enemies = [];
 let slays = [];
 let playerItems = ["cell-phone", "senor pointy"];
+let city ;
+let location;
 
 const prompt = require('prompt-sync')();
 const username = prompt('Hiya, what is your name?');
@@ -20,10 +22,10 @@ console.log(`Find the nearest library, Watchers love to read.`)
 
 boogleMaps();
 
-console.log("After chatting things over with Hermes, he asks if you are ready for your first night of patrol.")
-toPatrolOrToNot();
-console.log("What is your response? [Y] 'Yeah let's get out there!' or [N] 'No way dude, I'm not ready for that!'")
+console.log("After meeting your Watcher, he asks if you are ready for your first night of patrol.\n")
 
+console.log("\nWhat is your response? [Y] 'Yeah let's get out there!' or [N] 'No way dude, I'm not ready for that!'\n")
+toPatrolOrToNot();
 
 
 function toPatrolOrToNot(){
@@ -35,26 +37,33 @@ function toPatrolOrToNot(){
         console.log("Hermes is bummed. He decides to patrol on his own and sends you away with a cross necklace and a scornful look");
         playerItems.push("cross necklace");
     }
-    displayStatus()
 }
 
 function boogleMaps(){
     const mapChoice = prompt(`Do you look up the nearest [L] library or do you hightail it to the nearest [W] winery?`)
-    if(mapChoice === "L"){
-        console.log("")
+    if(mapChoice === "L" && city === "Bend"){
+        console.log("Look at you, a regular Bend, Oregon Buffy!")
         console.log("You immediately find your Watcher, Hermes von Giles frantically fumbling with books and is relieved when he notices you there.")
         console.log("'Oh my there you are!'")
         friends.push("Hermes von Giles");
-    }else if(mapChoice === "W"){
+    }else if(mapChoice === "W" && city === "Bend"){
         console.log("I don't blame you. Being a slayer is going to be tough.");
         console.log("Oh snap! Your new Watcher, Hermes von Giles, is a wine lover too! You guys bond over some funky red wine. Good times, but it gives you a headache!")
         friends.push("Hermes von Giles");
         playerHealth -= 5;
-    }else{
-        console.log("Don't think that stinky old Watcher won't find you!")
-        friends.push("Hermes von Giles");
+    }else if(mapChoice === "L" && city === "Sunnydale"){
+        console.log("Smart choice. You arrive at the library, see good old Giles there.")
+        console.log("He is happy to see you. He feeds you, gives you some lunch, yum thanks G.")
+        playerHealth += 10;
+    }else if(mapChoice === "W" && city === "Sunnydale"){
+        console.log("Well a winery in Sunnydale isn't your normal haunt...");
+        console.log(`Your enemy ${enemies[0]} is there in a murderous rampage, seeking revenge on you but hurting others.`);
+        console.log(`You guys battle, you take a hit but ultimately you slay the demon.`)
+        console.log("Your new watcher finds you and is happy to see you're already at work.")
+        playerHealth -= 10;
+        slays += 1;
+        enemies.pop();
     }
-    displayStatus()
 }
 
 function busDecision(){
@@ -65,22 +74,22 @@ function busDecision(){
         console.log("On the bus you make a friend, Leela. She shares her snacks with you.")
         playerHealth += 10;
         friends.push("Leela");
+        city = "Bend";
     }else if(busChoice === "S"){
         console.log("\nStraight to the Hellmouth for you. No fear!");
-        console.log("\nYou immediately slay a demon and now his demon wife Grognok is out to get you. Oopsie.");
+        console.log("\nYou immediately encounter a demon wreaking havoc on the bus, you slay away! But now his demon wife Grognok is out to get you. Oopsie.");
         console.log("The demon got one swing in before the slay, ouch.");
         playerHealth -=10;
         enemies.push("Grognok");
+        city = "Sunnydale";
     }else{
         console.log("You are frozen by indecision. Hopefully you decide before the ticket counter worker decides for you...")
     }
     
-    console.log(`\nYour decision making has brought you thus far:\n`)
-  
-    displayStatus()
+    
 }
 
-function displayStatus(){
+function displayHealth(){
     console.log(`You health level is at ${playerHealth}`)
     if (playerHealth < 10){
         console.log("Find some nourishment!")
@@ -89,6 +98,8 @@ function displayStatus(){
     }else{
         console.log("Feeling good and healthy! Noice.");
     }
+}
+function displayFriends(){
     for(let i=0; i < friends.length; i++){
         if(friends.length >0){
             console.log(`Your friends are ${friends[i]}, lucky you.`)
@@ -97,6 +108,10 @@ function displayStatus(){
         }
         
     }
+
+}
+ 
+function displayEnemies(){
     for(let i=0; i < enemies.length; i++){
         if(enemies.length > 0){
             console.log(`Watch out for ${enemies[i]}. They are not happy with you.`)
@@ -105,6 +120,10 @@ function displayStatus(){
         }
        
     }
+
+}
+ 
+function displaySlays(){
     for(let i=0; i < slays.length; i++){
         if(slays.length > 0){
             console.log(`Hellmouth be damned. It is already? You're doing great with the slays: ${slays[i]}\n`);
@@ -113,4 +132,7 @@ function displayStatus(){
         }
         
     }
+
 }
+
+   
