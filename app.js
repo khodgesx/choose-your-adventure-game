@@ -24,18 +24,44 @@ boogleMaps();
 
 console.log("After meeting your Watcher, he asks if you are ready for your first night of patrol.\n")
 
-console.log("\nWhat is your response? [Y] 'Yeah let's get out there!' or [N] 'No way dude, I'm not ready for that!'\n")
+
 toPatrolOrToNot();
 
 
+
 function toPatrolOrToNot(){
+    const toPatrolOrToNot = prompt(`\nWhat is your response? [Y] 'Yeah let's get out there!' or [N] 'No way dude, I'm not ready for that!'\n`)
     if (toPatrolOrToNot === "Y"){
-        console.log("Hermes is very pleased. He hands you a cross necklace and some holy water and ");
+        console.log("Your Watcher is very pleased. He hands you a cross necklace and some holy water and you guys head out.");
         playerItems.push("cross necklace", "holy water");
+        console.log("While you are out you see a couple but something seems off about one of them...Yep one is a vamp.\n")
+        const toSaveOrNot = prompt (`Do you [S] save them or [P] pretend not to see anything?`);
+        if (toSaveOrNot === "S"){
+            console.log("The vamp goes in for the bite but you are too quick and you save the poor sap who thought they had met someone nice for once.");
+            console.log("The poor sap, Gene, is now your friend.");
+            friends.push("Gene");
+        }else if(toSaveOrNot === ["P"]){
+            console.log("The vamp goes in for the bite and your Watcher tries to intervene. Oops now the poor sap who was with the vamp is dead and your Watcher is too!")
+            console.log("Your heart is now broken...");
+            playerHealth = 0;
+        }
+    
     } 
-    if (toPatrolOrToNot === "N"){
-        console.log("Hermes is bummed. He decides to patrol on his own and sends you away with a cross necklace and a scornful look");
+    else if (toPatrolOrToNot === "N"){
+        console.log("Hermes is bummed. He decides to patrol on his own and sends you away with a cross necklace and a scornful look :(");
         playerItems.push("cross necklace");
+        console.log("On your way home you encounter a vamp.")
+        const toSlayOrNot = promt(`Do you [S] slay or [R] run?`)
+        if (toSlayOrNot === "S"){
+            console.log("You guys battle a bit but he is no match for you! Check and slay.")
+            slays.push("vamp");
+        }else if(toSlayOrNot == "R"){
+            console.log("He is a big one! You take off running.")
+            console.log("The vamp catches up and you get some good hits in but he has you pinned...")
+            console.log("Thank glob for Giles! You see him pop appear behind the dust that once was the vamp.")
+            playerHealth -= 10;
+
+        }
     }
 }
 
@@ -61,7 +87,7 @@ function boogleMaps(){
         console.log(`You guys battle, you take a hit but ultimately you slay the demon.`)
         console.log("Your new watcher finds you and is happy to see you're already at work.")
         playerHealth -= 10;
-        slays += 1;
+        slays.push("Gragnok");
         enemies.pop();
     }
 }
@@ -80,6 +106,7 @@ function busDecision(){
         console.log("\nYou immediately encounter a demon wreaking havoc on the bus, you slay away! But now his demon wife Grognok is out to get you. Oopsie.");
         console.log("The demon got one swing in before the slay, ouch.");
         playerHealth -=10;
+        slays.push("paramore of Grognok")
         enemies.push("Grognok");
         city = "Sunnydale";
     }else{
@@ -135,4 +162,8 @@ function displaySlays(){
 
 }
 
-   
+function lose(){
+    if (playerHealth = 0){
+        console.log("No more health...Game over!")
+    }
+}   
