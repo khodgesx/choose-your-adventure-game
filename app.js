@@ -25,8 +25,8 @@ boogleMaps();
 
 console.log("After meeting your Watcher, he asks if you are ready for your first night of patrol.\n")
 
-
 toPatrolOrToNot();
+
 
 
 
@@ -44,7 +44,7 @@ function toPatrolOrToNot(){
         }else if(toSaveOrNot === "P"){
             console.log("The vamp goes in for the bite and your Watcher tries to intervene. Oops now the poor sap who was with the vamp is dead and your Watcher is too!")
             console.log("Your heart is now broken...");
-            watcher === false;
+            watcher = null;
             if(friends.length > 0){
                 console.log(`Luckily you have friends...`)
                 displayFriends()
@@ -54,7 +54,12 @@ function toPatrolOrToNot(){
                 if(goToWatchersCouncil === "G"){
                     console.log("Good choice. You can't do this without guidance. You're just a baby slayer, after all.")
                     console.log("The council appoints you a new Watcher, Wesley")
-                    watcher === true;
+                    if(city === "Bend"){
+                        watcher = "Bender"
+                    }else{
+                        watcher = "Wesley Wyndam-Pryce"
+                    }
+                    
                 }else if(goToWatchersCouncil === "N"){
                     console.log("You're going rogue eh?\n")
                     console.log("Good luck with that!")
@@ -66,7 +71,11 @@ function toPatrolOrToNot(){
                     friends.push("Spike");
                     console.log("Spike gets you some food and lets you know that the Watchers council will be sending you a new Watcher, Wesley.\n")
                     playerHealth =+ 10;
-                    watcher === true;
+                    if(city === "Bend"){
+                        watcher = "Bender"
+                    }else{
+                        watcher = "Wesley Wyndam-Pryce"
+                    }
 
                 }
             }else if(friends.length = 0){
@@ -84,7 +93,11 @@ function toPatrolOrToNot(){
                     console.log("He doesn't scare easily and is there to help whether you want it or not.\n")
                     friends.push("Spike");
                     console.log("He lets you know that the Watchers council will be sending you a new Watcher, Wesley.")
-                    watcher === true;
+                    if(city === "Bend"){
+                        watcher = "Bender"
+                    }else{
+                        watcher = "Wesley Wyndam-Pryce"
+                    }
 
                 }
             }
@@ -115,23 +128,23 @@ function boogleMaps(){
         console.log("Look at you, a regular Bend, Oregon Buffy!")
         console.log("You immediately find your Watcher, Hermes von Giles frantically fumbling with books and is relieved when he notices you there.")
         console.log("'Oh my there you are!'")
-        watcher === true;
+        watcher = "Hermes von Giles"
     }else if(mapChoice === "W" && city === "Bend"){
         console.log("I don't blame you. Being a slayer is going to be tough.");
         console.log("Oh snap! Your new Watcher, Hermes von Giles, is a wine lover too! You guys bond over some funky red wine. Good times, but it gives you a headache!")
-        watcher === true;
+        watcher = "Hermes von Giles"
         playerHealth -= 5;
     }else if(mapChoice === "L" && city === "Sunnydale"){
         console.log("Smart choice. You arrive at the library, see good old Giles there.")
         console.log("He is happy to see you. He feeds you, gives you some lunch, yum thanks G.")
-        watcher === true;
+        watcher = "Rupert Giles"
         playerHealth += 10;
     }else if(mapChoice === "W" && city === "Sunnydale"){
         console.log("Well a winery in Sunnydale isn't your normal haunt...");
         console.log(`Your enemy ${enemies[0]} is there in a murderous rampage, seeking revenge on you but hurting others.`);
         console.log(`You guys battle, you take a hit but ultimately you slay the demon.`)
         console.log("Your new watcher finds you and is happy to see you're already at work.")
-        watcher === true;
+        watcher = "Rupert Giles"
         playerHealth -= 10;
         slays.push("Gragnok");
         enemies.pop();
