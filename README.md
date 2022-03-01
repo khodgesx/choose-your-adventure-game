@@ -1,5 +1,8 @@
 Choose your own adventure: The slayer edition:
 
+first: install node package with command npm i
+then type node app.js to run the game!
+
 You are a slayer and have to make decisions about where to go and what to do.
 Are you going to make the right decisions and save others or try to shirk your reponsibilities?
 

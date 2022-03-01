@@ -7,6 +7,7 @@ let city ;
 let location;
 let watcher ;
 
+lose();
 const prompt = require('prompt-sync')();
 const username = prompt('Hiya, what is your name?');
 
@@ -26,7 +27,16 @@ boogleMaps();
 console.log("After meeting your Watcher, he asks if you are ready for your first night of patrol.\n")
 
 toPatrolOrToNot();
-
+// const mission () => {
+    
+// }
+//add uppercase to decisions.... :
+// const ninjaTurtles = ["Donatello", "Leonardo", "Raphael", "Michaelangelo"];
+ 
+// for (const name of ninjaTurtles){
+//    const uppercased =  name.toUpperCase();
+//    console.log(uppercased);
+// }
 
 
 
@@ -226,3 +236,4 @@ function lose(){
         console.log("No more health...Game over!")
     }
 }   
+
